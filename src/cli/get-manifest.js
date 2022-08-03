@@ -14,21 +14,22 @@ const { unionMerge, readManifestJSONFile, readImportedManifestFile, hasManifest 
   let manifest = {};
 
   // look for a manifest files
-  const manifestJSON = readManifestJSONFile(cwd, `${file}.json`);
+  // const manifestJSON = readManifestJSONFile(cwd, `${file}.json`);
   const manifestJS = readImportedManifestFile(cwd, `${file}.js`);
-  if (!hasManifest(manifestJS, manifestJSON)) {
-    throw new Error('Unable to find a manifest file in this project');
-  }
+  // if (!hasManifest(manifestJS, manifestJSON)) {
+  //   throw new Error('Unable to find a manifest file in this project');
+  // }
 
+  console.log(JSON.stringify(manifestJS));
   // manage manifest merge
   // check for .json
-  if (manifestJSON) {
-    manifest = merge(manifest, manifestJSON, { arrayMerge: unionMerge});
-  }  
-  if (manifestJS) {
-    manifest = merge(manifest, manifestJS, { arrayMerge: unionMerge });
-  }
+  // if (manifestJSON) {
+  //   manifest = merge(manifest, manifestJSON, { arrayMerge: unionMerge});
+  // }  
+  // if (manifestJS) {
+  //   manifest = merge(manifest, manifestJS, { arrayMerge: unionMerge });
+  // }
     
   // write the merged manifest to stdout
-  console.log(JSON.stringify(manifest));
+  // console.log(JSON.stringify(manifest));
 }(process.cwd()));
